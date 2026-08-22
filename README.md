@@ -1,5 +1,17 @@
 # Handoff: NightOwl — Gamified Movie Watchlist
 
+## Live on this deployment: Supabase auth + persistence
+This repo's `NightOwl.dc.html` has been wired to a real Supabase backend
+(auth, watchlists, and ratings), on top of the design/support-file pair
+described below. Browsing, search, and the quiz all still work with no
+account — a login/signup modal only appears the moment someone tries to
+**save** something (add a movie to a list, or rate one). See
+[`supabase/schema.sql`](supabase/schema.sql) for the tables (`dc_lists`,
+`dc_list_items`, `dc_ratings`) and Row Level Security policies, and
+[`config.js`](config.js) for the project URL/anon key. `webapp/` is a
+separate, simpler standalone app kept from an earlier iteration; it isn't
+the primary deployment.
+
 ## Overview
 NightOwl is a movie watchlist app built around one core loop: **search a movie, save it to a personal list, rate it after watching.** A light gamification layer (XP, streaks, badges, an "owl type" persona) sits on top to encourage returning. The prototype covers the full experience: marketing landing page, onboarding quiz, discover/search, list management, a watched log with a 0–5 half-star rating system, social/stat screens, and CSV import of viewing history.
 
