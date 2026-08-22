@@ -194,5 +194,17 @@ All four families load from Google Fonts in the document head.
 | `NightOwl.dc.html` | The complete prototype — all screens, all logic, all styling. Open it directly in a browser. |
 | `support.js` | Runtime that the prototype needs in order to render. Not part of the design; do not port it. |
 | `assets/movie-bg.jpg` | Landing background photograph (see Assets note above). |
+| `webapp/` | A separate, real, working app (auth + watchlist + ratings, Supabase-backed). See [`webapp/README.md`](webapp/README.md). |
+| `supabase/schema.sql` | Database schema + Row Level Security policies for `webapp/`. |
 
 Screen-by-screen markup is easiest to find by searching `NightOwl.dc.html` for `data-screen-label` — every screen root is tagged with its name.
+
+## Supabase-backed webapp
+
+`webapp/` is a small standalone app (no build step, plain HTML/CSS/JS +
+the Supabase JS client) that actually runs, unlike the `.dc.html` design
+file above. It implements the three things asked for in a follow-up to this
+handoff — **auth, watchlist, and ratings** — persisted per-user in Supabase
+with Row Level Security. It intentionally does not attempt to port the rest
+of the NightOwl prototype (gamification, quiz, TMDB search, etc.); see
+[`webapp/README.md`](webapp/README.md) for setup and scope.
